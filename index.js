@@ -8,8 +8,6 @@ const cors = require('cors');
 const app = express();
 const port = 5000;
 
-console.log(PRIVATE_KEY)
-
 app.use(express.json());
 
 const provider = new ethers.JsonRpcProvider('https://api.avax-test.network/ext/bc/C/rpc');
