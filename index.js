@@ -14,7 +14,7 @@ app.use(express.json());
 
 const provider = new ethers.JsonRpcProvider('https://api.avax-test.network/ext/bc/C/rpc');
 const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
-const Token_Address = ' 0x7072F770a71Be6cB136b30f7e35ac0FA360Eaf5d';
+const Token_Address = '0x7072F770a71Be6cB136b30f7e35ac0FA360Eaf5d';
 
 
 const tokenContract = new ethers.Contract(Token_Address, Token_ABI, wallet);
@@ -57,9 +57,9 @@ app.post('/mintTokens', async (req, res) => {
         const receiptAuthor = await tokenMintAuthor.wait()
         console.log('Transaction Receipt:', receiptAuthor);
 
-        const tokenMintLocked = await tokenContract.mintToLocked(hash, tokenAmount);
-        const receiptLocked = await tokenMintLocked.wait();
-        console.log('Transaction Receipt:', receiptLocked);
+        // const tokenMintLocked = await tokenContract.mintToLocked(hash, tokenAmount);
+        // const receiptLocked = await tokenMintLocked.wait();
+        // console.log('Transaction Receipt:', receiptLocked);
 
         res.send(`Tokens transferred: ${tokenAmount} to ${address}, ${tokenAmount} to ${author}, ${tokenAmount} to ${hash}`);
     } catch (error) {
