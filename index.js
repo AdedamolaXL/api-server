@@ -57,9 +57,9 @@ app.post('/mintTokens', async (req, res) => {
         const receiptAuthor = await tokenMintAuthor.wait()
         console.log('Transaction Receipt:', receiptAuthor);
 
-        // const tokenMintLocked = await tokenContract.mintToLocked(hash, tokenAmount);
-        // const receiptLocked = await tokenMintLocked.wait();
-        // console.log('Transaction Receipt:', receiptLocked);
+        const tokenMintLocked = await tokenContract.mintToLocked(hash, tokenAmount);
+        const receiptLocked = await tokenMintLocked.wait();
+        console.log('Transaction Receipt:', receiptLocked);
 
         res.send(`Tokens transferred: ${tokenAmount} to ${address}, ${tokenAmount} to ${author}, ${tokenAmount} to ${hash}`);
     } catch (error) {
